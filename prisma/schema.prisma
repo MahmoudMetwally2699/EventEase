@@ -1,0 +1,47 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id              String     @id @default(auto()) @map("_id") @db.ObjectId
+  name            String?
+  email           String     @unique
+  password        String
+  organizedEvents Event[]    @relation("OrganizedEvents")
+  attendeeAt      Attendee[]
+  createdAt       DateTime   @default(now())
+  updatedAt       DateTime   @updatedAt
+}
+
+model Event {
+  id           String     @id @default(auto()) @map("_id") @db.ObjectId
+  name         String
+  date         DateTime
+  location     String
+  maxAttendees Int
+  organizerId  String     @db.ObjectId
+  creator      User       @relation("OrganizedEvents", fields: [organizerId], references: [id])
+  attendees    Attendee[]
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+
+  @@index([organizerId])
+}
+
+model Attendee {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId    String   @db.ObjectId
+  eventId   String   @db.ObjectId
+  user      User     @relation(fields: [userId], references: [id])
+  event     Event    @relation(fields: [eventId], references: [id])
+  createdAt DateTime @default(now())
+
+  @@unique([userId, eventId])
+  @@index([userId])
+  @@index([eventId])
+}

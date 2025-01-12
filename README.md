@@ -1,6 +1,28 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# EventEase Platform
+
+A real-time event management platform built with Next.js, Prisma, and Socket.IO.
+
+## Features
+
+- User authentication (email/password)
+- Event creation and management
+- Real-time event updates
+- Attendee registration
+- Analytics dashboard
+- Search and filter events
+
+## Tech Stack
+
+- Next.js 14 (App Router)
+- Prisma (Database ORM)
+- NextAuth.js (Authentication)
+- Socket.IO (Real-time updates)
+- Tailwind CSS (Styling)
+- TypeScript
 
 ## Getting Started
+
+1. Clone the repository:
 
 First, run the development server:
 
