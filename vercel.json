@@ -1,7 +1,7 @@
 {
     "build": {
       "env": {
-        "NEXT_PUBLIC_DATABASE_URL": "mongodb+srv://mahmmetwally26:Mah%401999@cluster0.wmc9x7o.mongodb.net/event"
+        ""
       }
     }
   }
